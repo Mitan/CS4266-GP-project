@@ -1,0 +1,67 @@
+our data
+100	0:01:00.838922
+200	0:03:13.874853 	
+300 0:06:49.228367
+
+15000			maybe around 15 days
+
+our data with sample size 200
+100 
+200 0:00:39.715804
+
+
+
+
+same data as the HMC guide
+HMC 0:00:51.848147 
+ame                              : GP regression
+Log-likelihood                    : -19.2823154149
+Number of Parameters              : 3
+Number of Optimization Parameters : 3
+Updates                           : True
+Parameters:
+  GP_regression.           |       Value       |  Constraint  |     Prior      |  Tied to
+  rbf.variance             |     3.2547623799  |     +ve      |  Ga(0.1, 0.1)  |         
+  rbf.lengthscale          |    1.78390586159  |     +ve      |  Ga(0.1, 0.1)  |         
+  Gaussian_noise.variance  |  0.0639476777966  |     +ve      |  Ga(0.1, 0.1)  |
+
+
+GP auto optimise
+0:00:00.071849
+Name                              : GP regression
+Log-likelihood                    : -30.1342953296
+Number of Parameters              : 3
+Number of Optimization Parameters : 3
+Updates                           : True
+Parameters:
+  GP_regression.           |       Value       |  Constraint  |  Prior  |  Tied to
+  rbf.variance             |    1.08499766302  |     +ve      |         |         
+  rbf.lengthscale          |    1.95710063243  |     +ve      |         |         
+  Gaussian_noise.variance  |  0.0852976431422  |     +ve      |         |    
+
+SparseGP auto optimse
+0:00:00.114273
+Name                              : sparse gp
+Log-likelihood                    : -40.5584548312
+Number of Parameters              : 13
+Number of Optimization Parameters : 13
+Updates                           : True
+Parameters:
+  sparse_gp.               |      Value      |  Constraint  |  Prior  |  Tied to
+  inducing inputs          |        (10, 1)  |              |         |         
+  rbf.variance             |  1.26147550984  |     +ve      |         |         
+  rbf.lengthscale          |  1.81123716201  |     +ve      |         |         
+  Gaussian_noise.variance  |  0.10427170202  |     +ve      |         |
+
+
+
+GP space
+
+500 0.2G
+1000 0.35
+2000 1.35
+2500 1.82 0:00:43.501162
+
+
+
+
