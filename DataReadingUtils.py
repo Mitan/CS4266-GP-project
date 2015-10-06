@@ -27,7 +27,7 @@ def GenerateTestAndTrainData(Z, test_size=0):
     if test_size == 0:
         test_size = len(Z) / 3
     # TODO change to random seed
-    seed(45)
+    #seed(45)
     testSet = sample(Z, test_size)
     trainSet = []
     for point in Z:
