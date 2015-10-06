@@ -1,4 +1,3 @@
-import numpy as np
 from random import seed, sample
 
 
@@ -24,15 +23,12 @@ def ReadData(intput_file_name):
 
 # return trainSet and testSet
 def GenerateTestAndTrainData(Z):
+    # TODO change to random seed
     seed(45)
     testSet = sample(Z, len(Z) / 3)
     trainSet = []
     for point in Z:
         if not point in testSet:
             trainSet.append(point)
-    testSetX = np.array([data[0] for data in testSet]);
-    testSetY = np.array([data[1] for data in testSet]);
-    trainSetX = np.array([data[0] for data in trainSet]);
-    trainSetY = np.array([data[1] for data in trainSet]);
     return trainSet, testSet
 
