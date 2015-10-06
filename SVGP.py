@@ -10,11 +10,14 @@ class SVGP():
     No need to infer the parameters
     """
 
-    def __init__(self, X, Y):
+    def __init__(self, X, Y, batch_size = 10, inducing_input_size = 20):
         #Z and batchsize can be changed
-        Z = np.random.rand(20,1)
-        batchsize = 10
-        m = GPy.core.SVGP(X, Y, Z, GPy.kern.RBF(1) + GPy.kern.White(1), GPy.likelihoods.Gaussian(), batchsize=batchsize)
+        #set correct shape for inducing inputs
+        # TODO
+        # check if this is correct
+        Z_shape = (X[0].shape)[0]
+        Z = np.random.rand(inducing_input_size,Z_shape)
+        m = GPy.core.SVGP(X, Y, Z, GPy.kern.RBF(1) + GPy.kern.White(1), GPy.likelihoods.Gaussian(), batchsize=batch_size)
         m.kern.white.variance = 1e-5
         m.kern.white.fix()
         opt = climin.Adadelta(m.optimizer_array, m.stochastic_grad, step_rate=0.2, momentum=0.9)
@@ -24,7 +27,7 @@ class SVGP():
     def callback(self, i):
         #print m.log_likelihood(), "\r",
         #Stop after 5000 iterations
-        if i['n_iter'] > 5000:
+        if i['n_iter'] > 50:
             return True
         return False
 

@@ -15,7 +15,7 @@ x_test = np.asarray([[1,2]])
 print m.predict(x_test)
 
 
-N=5000
+N=15000
 X = np.random.rand(N)[:, None]
 
 Y1 = np.sin(6*X) + 0.1*np.random.randn(N,1)
