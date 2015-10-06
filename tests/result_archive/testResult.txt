@@ -1,0 +1,98 @@
+Name                              : sparse gp
+Log-likelihood                    : -17394.3416062
+Number of Parameters              : 23
+Number of Optimization Parameters : 23
+Updates                           : True
+Parameters:
+  sparse_gp.               |        Value        |  Constraint  |  Prior  |  Tied to
+  inducing inputs          |            (10, 2)  |              |         |         
+  rbf.variance             |  1.79574583623e-12  |     +ve      |         |         
+  rbf.lengthscale          |      4.02641339913  |     +ve      |         |         
+  Gaussian_noise.variance  |      1.95999061956  |     +ve      |         |         
+(array([  3.78467186e-28]), array([ 0.74434]), array([ 1.95999062]))
+(array([  2.51299735e-29]), array([ 0.54097]), array([ 1.95999062]))
+(array([  2.79306476e-19]), array([-1.5834]), array([ 1.95999062]))
+(array([  2.74472897e-31]), array([ 0.057458]), array([ 1.95999062]))
+(array([  3.90010529e-24]), array([ 1.2395]), array([ 1.95999062]))
+(array([  5.50920611e-54]), array([-0.8254]), array([ 1.95999062]))
+(array([  2.79474289e-78]), array([ 0.094421]), array([ 1.95999062]))
+(array([  7.85508713e-80]), array([ 0.21296]), array([ 1.95999062]))
+(array([  1.79727240e-48]), array([ 0.98893]), array([ 1.95999062]))
+(array([  1.80547334e-23]), array([ 0.41642]), array([ 1.95999062]))
+(array([  9.22264853e-43]), array([-1.6787]), array([ 1.95999062]))
+error:1.717581
+
+
+Name                              : sparse gp
+Log-likelihood                    : -16430.7004193
+Number of Parameters              : 203
+Number of Optimization Parameters : 203
+Updates                           : True
+Parameters:
+  sparse_gp.               |      Value      |  Constraint  |  Prior  |  Tied to
+  inducing inputs          |       (100, 2)  |              |         |         
+  rbf.variance             |    0.124769886  |     +ve      |         |         
+  rbf.lengthscale          |  14.6712366828  |     +ve      |         |         
+  Gaussian_noise.variance  |  1.60880146218  |     +ve      |         |         
+(array([ 0.37923439]), array([-3.9534]), array([ 1.62605569]))
+(array([-0.04188931]), array([-0.26364]), array([ 1.67562921]))
+(array([ 0.69898477]), array([ 2.3984]), array([ 1.63348278]))
+(array([ 0.33995764]), array([ 1.3552]), array([ 1.72358416]))
+(array([-0.27496102]), array([-0.75825]), array([ 1.62577026]))
+(array([ 0.63914389]), array([ 2.8295]), array([ 1.61996069]))
+(array([-0.37368861]), array([-0.65994]), array([ 1.63193705]))
+(array([ 0.66050375]), array([ 1.9759]), array([ 1.65939441]))
+(array([ 0.44517837]), array([ 0.22884]), array([ 1.65307439]))
+(array([ 0.99361968]), array([-2.1733]), array([ 1.62510308]))
+(array([ 0.72893638]), array([ 2.6158]), array([ 1.62524555]))
+error:2.204042
+
+Name                              : sparse gp
+Log-likelihood                    : -16558.9557557
+Number of Parameters              : 403
+Number of Optimization Parameters : 403
+Updates                           : True
+Parameters:
+  sparse_gp.               |      Value       |  Constraint  |  Prior  |  Tied to
+  inducing inputs          |        (200, 2)  |              |         |         
+  rbf.variance             |  0.222017945691  |     +ve      |         |         
+  rbf.lengthscale          |    10.321418781  |     +ve      |         |         
+  Gaussian_noise.variance  |    1.6223979724  |     +ve      |         |         
+(array([ 1.23046392]), array([ 1.2247]), array([ 1.64215085]))
+(array([ 0.80394581]), array([ 1.4349]), array([ 1.65856582]))
+(array([-0.2549926]), array([ 0.24186]), array([ 1.68495426]))
+(array([-0.06566034]), array([-1.1069]), array([ 1.65500755]))
+(array([ 0.23882752]), array([ 0.26104]), array([ 1.67244976]))
+(array([-0.49781465]), array([ 0.13912]), array([ 1.71160709]))
+(array([ 0.54403116]), array([ 1.259]), array([ 1.64666995]))
+(array([ 0.23360166]), array([-0.035737]), array([ 1.68487227]))
+(array([ 0.05874765]), array([ 0.27144]), array([ 1.70550571]))
+(array([ 0.25411116]), array([-1.7208]), array([ 1.69042054]))
+(array([ 0.12369641]), array([-0.65721]), array([ 1.63886182]))
+error:1.556715
+
+
+Name                              : sparse gp
+Log-likelihood                    : -16198.2141173
+Number of Parameters              : 1003
+Number of Optimization Parameters : 1003
+Updates                           : True
+Parameters:
+  sparse_gp.               |      Value       |  Constraint  |  Prior  |  Tied to
+  inducing inputs          |        (500, 2)  |              |         |         
+  rbf.variance             |  0.442724643159  |     +ve      |         |         
+  rbf.lengthscale          |   8.71271361482  |     +ve      |         |         
+  Gaussian_noise.variance  |   1.44482892291  |     +ve      |         |         
+(array([ 0.095747]), array([-1.2172]), array([ 1.49761337]))
+(array([ 0.79395885]), array([ 2.5122]), array([ 1.47755443]))
+(array([ 0.47586646]), array([-1.6414]), array([ 1.46736819]))
+(array([ 0.03635591]), array([ 0.40467]), array([ 1.49473486]))
+(array([ 0.95863072]), array([ 1.1022]), array([ 1.46907056]))
+(array([ 1.06163029]), array([ 0.83134]), array([ 1.47131448]))
+(array([ 0.48919665]), array([ 0.95849]), array([ 1.58987771]))
+(array([ 0.08221771]), array([ 0.81122]), array([ 1.48050538]))
+(array([ 0.42289243]), array([ 0.237]), array([ 1.50128698]))
+(array([ 0.87007299]), array([ 3.0065]), array([ 1.48555032]))
+(array([ 0.66532948]), array([ 0.30399]), array([ 1.47756644]))
+error:1.687460
+
