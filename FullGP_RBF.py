@@ -12,6 +12,7 @@ class FullGP_RBF():
     def __init__(self, X, Y):
         self.model = GPy.models.GPRegression(X, Y)
 
+    # not used anymore
     def setParameters(self, params):
         # params is a list [rbf.variance, rbf.lengthscale, Gaussian_noise.variance ]
         self.model[:] = params

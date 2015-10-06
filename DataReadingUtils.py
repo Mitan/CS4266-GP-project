@@ -22,10 +22,13 @@ def ReadData(intput_file_name):
 
 
 # return trainSet and testSet
-def GenerateTestAndTrainData(Z):
+# by default the size of generated test data is 1/3 of the whole sample
+def GenerateTestAndTrainData(Z, test_size=0):
+    if test_size == 0:
+        test_size = len(Z) / 3
     # TODO change to random seed
     seed(45)
-    testSet = sample(Z, len(Z) / 3)
+    testSet = sample(Z, test_size)
     trainSet = []
     for point in Z:
         if not point in testSet:
