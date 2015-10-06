@@ -2,12 +2,11 @@
 __author__ = 'Dmitrii'
 
 import numpy as np
-
-import DataReadingUtils
-import FullGP_RBF
-import SVGP
-import SparseGP
 import GPy
+
+from src import FullGP_RBF, SVGP
+from src import SparseGP
+
 
 def BuildModel(mode, trainX, trainY):
     if mode == "full":

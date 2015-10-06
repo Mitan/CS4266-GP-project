@@ -3,10 +3,9 @@ __author__ = 'Dmitrii'
 
 import numpy as np
 
-import DataReadingUtils
-import FullGP_RBF
-import SVGP
-import SparseGP
+from src import DataReadingUtils, SparseGP, FullGP_RBF, SVGP
+
+
 def BuildModel(mode, trainX, trainY):
     if mode == "full":
         model = FullGP_RBF.FullGP_RBF(trainX, trainY)
@@ -23,7 +22,7 @@ def BuildModel(mode, trainX, trainY):
 
 
 if __name__ == "__main__":
-    input_file_name = "./infer_parameters/Dec1_2012.csv"
+    input_file_name = "./data/Dec1_2012.csv"
     
     all_data = DataReadingUtils.ReadData(input_file_name)
     print "Finished reading data"

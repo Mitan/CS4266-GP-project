@@ -1,4 +1,4 @@
-from random import seed, sample
+from random import sample
 
 
 def ReadData(intput_file_name):

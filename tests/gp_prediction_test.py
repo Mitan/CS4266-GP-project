@@ -1,6 +1,7 @@
-from SVGP import SVGP
-from FullGP_RBF import FullGP_RBF
 import numpy as np
+
+from src.SVGP import SVGP
+from src.FullGP_RBF import FullGP_RBF
 
 X = np.random.uniform(-3.,3.,(10,2))
 Y = np.sin(X[:,0:1]) * np.sin(X[:,1:2])+np.random.randn(10,1)*0.05
