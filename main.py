@@ -1,3 +1,4 @@
+
 __author__ = 'Dmitrii'
 
 import numpy as np
@@ -5,7 +6,6 @@ import numpy as np
 import DataReadingUtils
 import FullGP_RBF
 import SVGP
-
 
 def BuildModel(mode, trainX, trainY):
     if mode == "full":
@@ -31,9 +31,11 @@ if __name__ == "__main__":
     trainSetY = np.array([data[1] for data in trainSet]);
     print "Finished dividing data into test and train"
 
-    model = BuildModel("full", trainSetX, trainSetY)
+    model = BuildModel("svgp", trainSetX, trainSetY)
     print "Finished building model"
-    p_mean, p_variance = model.predict(trainSetX)
+    p_mean, p_variance = model.predict(testSetX)
     print "Finished prediction"
+
     error = ((testSetY - p_mean) ** 2).mean()
-    print "error is " + error
+
+    print "error is " + str(error)
