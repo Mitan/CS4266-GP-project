@@ -3,6 +3,7 @@ __author__ = 'Lifu'
 
 import numpy as np
 import GPy
+from matplotlib import pyplot as plt
 
 from src import SparseGP
 from src import DataReadingUtils
@@ -13,7 +14,7 @@ def BuildModel(mode, trainX, trainY):
 
     return model
 
-def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=200, max_iters=100, optimize=True, plot=False, nan=False):
+def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=200, max_iters=100, optimize=True, plot=True, nan=False):
     """Run a 2D example of a sparse GP regression."""
     np.random.seed(1234)
     # X = np.random.uniform(-3., 3., (num_samples, 2))
@@ -43,7 +44,9 @@ def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=200, max_iters=1
 
     # plot
     if plot:
+        print m.plot
         m.plot()
+        plt.show()
 
     print m
     return m
@@ -55,22 +58,22 @@ def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=200, max_iters=1
 # 2007Apr-sst.csv
 # Dec1_2012.csv
             
-Z = DataReadingUtils.ReadData("data/1854oct-sst.csv")
+Z = DataReadingUtils.ReadData("data/Dec1_2012.csv")
 trainSet, testSet = DataReadingUtils.GenerateTestAndTrainData(Z)
 print "trainset size: %d, testSet size: %d" %((len(trainSet)), (len(testSet)))
 
-# trainSetX = np.array([mtuple[0]for mtuple in trainSet])
-# trainSetY = np.array([mtuple[1]for mtuple in trainSet])
+trainSetX = np.array([mtuple[0]for mtuple in trainSet])
+trainSetY = np.array([mtuple[1]for mtuple in trainSet])
 
-# model = sparse_GP_regression_2D(trainSetX, trainSetY)
+model = sparse_GP_regression_2D(trainSetX, trainSetY)
 
-# testSetX = np.array([mtuple[0]for mtuple in testSet])
-# testSetY = np.array([mtuple[1]for mtuple in testSet])
+testSetX = np.array([mtuple[0]for mtuple in testSet])
+testSetY = np.array([mtuple[1]for mtuple in testSet])
 
 
-# p_mean, p_variance = model.predict(testSetX)
-# result = zip(p_mean, testSetY, p_variance)
+p_mean, p_variance = model.predict(testSetX)
+result = zip(p_mean, testSetY, p_variance)
 
-# error = ((testSetY - p_mean) ** 2).mean()
-# print "error:%f"%error
+error = ((testSetY - p_mean) ** 2).mean()
+print "error:%f"%error
 
