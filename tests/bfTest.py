@@ -6,7 +6,11 @@ import numpy as np
 from src import SparseGP
 from src import DataReadingUtils
 
-
+# 1854oct-sst
+# 1991Aug-sst
+# 1999Feb-sst
+# 2007Apr-sst
+# Dec1_2012
 Z = DataReadingUtils.ReadData("data/Dec1_2012.csv")
 matrix = np.zeros((360, 180))
 for i in xrange(0,360):

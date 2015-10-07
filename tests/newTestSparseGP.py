@@ -13,7 +13,7 @@ def BuildModel(mode, trainX, trainY):
 
     return model
 
-def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=100, max_iters=100, optimize=True, plot=False, nan=False):
+def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=200, max_iters=100, optimize=True, plot=False, nan=False):
     """Run a 2D example of a sparse GP regression."""
     np.random.seed(1234)
     # X = np.random.uniform(-3., 3., (num_samples, 2))
@@ -49,32 +49,28 @@ def sparse_GP_regression_2D(X, Y, num_samples=400, num_inducing=100, max_iters=1
     return m
 
 
+# 1854oct-sst.csv
+# 1991Aug-sst.csv
+# 1999Feb-sst.csv
+# 2007Apr-sst.csv
+# Dec1_2012.csv
             
-Z = DataReadingUtils.ReadData("data/Dec1_2012.csv")
+Z = DataReadingUtils.ReadData("data/1854oct-sst.csv")
 trainSet, testSet = DataReadingUtils.GenerateTestAndTrainData(Z)
+print "trainset size: %d, testSet size: %d" %((len(trainSet)), (len(testSet)))
 
-trainSetX = np.array([mtuple[0]for mtuple in trainSet])
-trainSetY = np.array([mtuple[1]for mtuple in trainSet])
+# trainSetX = np.array([mtuple[0]for mtuple in trainSet])
+# trainSetY = np.array([mtuple[1]for mtuple in trainSet])
 
-model = sparse_GP_regression_2D(trainSetX, trainSetY)
+# model = sparse_GP_regression_2D(trainSetX, trainSetY)
+
+# testSetX = np.array([mtuple[0]for mtuple in testSet])
+# testSetY = np.array([mtuple[1]for mtuple in testSet])
 
 
-testSetX = np.array([mtuple[0]for mtuple in testSet])
-testSetY = np.array([mtuple[1]for mtuple in testSet])
+# p_mean, p_variance = model.predict(testSetX)
+# result = zip(p_mean, testSetY, p_variance)
 
-NUM_TO_TEST = 200
-firstTestX = testSetX[0:NUM_TO_TEST]
-firstTestY = testSetY[0:NUM_TO_TEST]
-
-p_mean, p_variance = model.predict(firstTestX)
-result = zip(p_mean, firstTestY, p_variance)
-counter = 0
-for (mean, ground, variance) in result:
-    if counter > 10:
-        break
-    counter += 1
-    print (mean, ground, variance)
-
-error = ((firstTestY - p_mean) ** 2).mean()
-print "error:%f"%error
+# error = ((testSetY - p_mean) ** 2).mean()
+# print "error:%f"%error
 
