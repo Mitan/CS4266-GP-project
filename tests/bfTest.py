@@ -14,10 +14,9 @@ for i in xrange(0,360):
         matrix[i][j] = -100;
 # print matrix
 
-max_X = -1;
 for (x, y), z in Z:
-    if x > max_X:
-        matrix[x][y] = z[0];
+    matrix[x][y] = z[0];
+        
 
 interesting_cases = []
 
