@@ -6,8 +6,8 @@ class RationalQuadratic(Kern):
     """
     Testing Custom Kernel 
     """
-    def __init__(self,input_dim,variance=1.,lengthscale=1.,power=1.):
-        super(RationalQuadratic, self).__init__(input_dim, 1, 'rat_quad')
+    def __init__(self,input_dim,variance=1.,lengthscale=1.,power=1.,active_dims=None, name='linear'):
+        super(RationalQuadratic, self).__init__(input_dim, active_dims, name)
         assert input_dim == 1, "For this kernel we assume input_dim=1"
         self.variance = Param('variance', variance)
         self.lengthscale = Param('lengtscale', lengthscale)
