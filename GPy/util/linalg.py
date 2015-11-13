@@ -55,18 +55,25 @@ def force_F_ordered(A):
 
 
 def jitchol(A, maxtries=5):
+    
+    
     A = np.ascontiguousarray(A)
     L, info = lapack.dpotrf(A, lower=1)
+    #print A
+    #print 'hi'
     if info == 0:
         return L
     else:
         diagA = np.diag(A)
         if np.any(diagA <= 0.):
             raise linalg.LinAlgError("not pd: non-positive diagonal elements")
-        jitter = diagA.mean() * 1e-6
+        jitter = diagA.mean() * 1e-1
         num_tries = 1
         while num_tries <= maxtries and np.isfinite(jitter):
             try:
+                
+                #print A + np.eye(A.shape[0]) * jitter
+                
                 L = linalg.cholesky(A + np.eye(A.shape[0]) * jitter, lower=True)
                 return L
             except:
@@ -205,7 +212,9 @@ def pdinv(A, *args):
     :rtype logdet: float64
 
     """
+    
     L = jitchol(A, *args)
+    
     logdet = 2.*np.sum(np.log(np.diag(L)))
     Li = dtrtri(L)
     Ai, _ = dpotri(L, lower=1)
