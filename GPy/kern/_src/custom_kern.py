@@ -7,11 +7,11 @@ class RationalQuadratic(Kern):
     """
     Testing Custom Kernel 
     """
-    def __init__(self,input_dim,nodes_matrix,variance=1.,lengthscale=1.,power=1.,active_dims=None, name='quad'):
+    def __init__(self,input_dim,nodes_matrix,variance=1.,lengthscale=1.,power=1.,active_dims=None, name='MODIFIEDRBF'):
         super(RationalQuadratic, self).__init__(input_dim, active_dims, name)
         assert input_dim == 1, "For this kernel we assume input_dim=1"
         self.variance = Param('variance', variance)
-        self.lengthscale = Param('lengtscale', lengthscale)
+        self.lengthscale = Param('lengthscale', lengthscale)
         #self.power = Param('power', power)
         self.nodes_matrix = Param('nodes_matrix', nodes_matrix)
         self.link_parameters(self.variance, self.lengthscale)
@@ -65,9 +65,9 @@ class RationalQuadratic(Kern):
         #print 'hi'
         #print X2
         #dvar = (1 + dist2/2.)**(-self.power)
-        dvar = 2*math.sqrt(self.variance)* exp_part
-        print dL_dK
-        dl =  self.variance * dist2**2 * self.lengthscale**(-3) * exp_part
+        dvar =  exp_part
+        #print dL_dK
+        dl =  self.variance * (dist2**2) * (self.lengthscale**(-3)) * exp_part
         #dp = - self.variance * np.log(1 + dist2/2.) * (1 + dist2/2.)**(-self.power)
         print 'before optimization: \n',self.variance
         self.variance.gradient = np.sum(dvar*dL_dK)
