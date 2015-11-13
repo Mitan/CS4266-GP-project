@@ -315,7 +315,7 @@ with open('Raw-count-data-major-roads.csv', 'rb') as f:
         i = i+1
         #print row
         try:
-            if row[7]!=row[10] and row[17]==Time and (row[2]=="Derby" or row[2]=="Derbyshire"):
+            if row[7]!=row[10] and row[17]==Time and (row[2]=="Derby" or row[2]=="Defrbyshire"):
                 print i
                 lata, lona = OSGB36toWGS84(float(row[8]), float(row[9]))
                 latb, lonb = OSGB36toWGS84(float(row[11]), float(row[12]))
@@ -368,7 +368,7 @@ for s in range(len(path[::]) -1):
 """
 plt.subplots_adjust(bottom = 0.1)
 plt.scatter(X, Y)
-"""
+
 for x, y, xx, yy in zip(XL, YL, X, Y):
     plt.annotate(
         str(x) + "\n" + str(y), 
@@ -376,12 +376,12 @@ for x, y, xx, yy in zip(XL, YL, X, Y):
         textcoords = 'offset points', ha = 'right', va = 'bottom',
         bbox = dict(boxstyle = 'round,pad=0.2', fc = 'blue', alpha = 0.2),
         arrowprops = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0'))
-"""
 
 
 
-lata, lona = OSGB36toWGS84(400160, 413700)
-latb, lonb = OSGB36toWGS84(341230, 445600)
+
+lata, lona = OSGB36toWGS84(438594, 333304)
+latb, lonb = OSGB36toWGS84(431990, 335030)
 
 starting=(str(lata)+","+str(lona)+","+str(438594)+","+str(333304))
 goal=(str(latb)+","+str(lonb)+","+str(431990)+","+str(335030))
@@ -414,19 +414,19 @@ while not found:
             observed_edges = np.append(observed_edges, np.array([[graph.get_edge_index(n.get_id(),current)]]), axis=0)
             observed_congestions = np.append(observed_congestions, np.array([[n.get_weight(graph.get_vertex(current))]]), axis=0)
 
-    #print observed_edges
-    #print "======="
-    #print observed_congestions
-    #print result_prediction
+    print observed_edges
+    print "======="
+    print observed_congestions
+    print result_prediction
 
     m = GPy.models.GPRegression(observed_edges,observed_congestions, ker1)
     m.optimize(messages=False)
     updated_weight = m.predict(result_prediction)[0]
-    #print "=======!!!!!!!!!!!!!!!!!!!!!!!!!!!==============================="
-    #print updated_weight.shape[0]
+    print "=======!!!!!!!!!!!!!!!!!!!!!!!!!!!==============================="
+    print updated_weight.shape[0]
     for k in range (updated_weight.shape[0]):
         if updated_weight[k][0]<0:
-            #print "negative"
+            print "negative"
             updated_weight[k][0] = 0
 
     graph.update_gp_weight(updated_weight)
