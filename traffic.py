@@ -1,5 +1,6 @@
 from __future__ import division
 import numpy as np
+np.set_printoptions(threshold=np.nan)
 import csv
 import sys
 import heapq
@@ -306,7 +307,7 @@ i = 0
 #Preprocess the data
 Time = "8"
 
-with open('Raw-count-data-major-roads.csv', 'rb') as f:
+with open('Raw-count-data-major-roads-derby.csv', 'rb') as f:
     reader = csv.reader(f)
     added_edges = []
     for row in reader:
@@ -391,7 +392,7 @@ graph.initialize_node_matrix()
 graph.all_distance()
 edge_matrix_structure = graph.build_edge_martix()
 result_prediction = np.empty((0,1), dtype = np.int32)
-print graph.edge_list
+#print graph.edge_list
 #print result_prediction
 #print len(graph.edge_list)
 
@@ -402,31 +403,35 @@ observed_edges = np.empty((0,1), dtype = np.int32)
 observed_congestions = np.empty((0,1), dtype = np.int32)
 ker1 = ratquadkern(1,edge_matrix_structure)
 time = 0
-print current
+#print current
+print graph.edge_list
+print ker1
+print edge_matrix_structure
+is_pos_def(x)
 while not found:
     time = time + 1
-    print time
-    print current
-    print goal
+    #print time
+    #print current
+    #print goal
     #observe
     for n in graph.get_vertex(current).get_connections():
         if [graph.get_edge_index(n.get_id(),current)] not in observed_edges:
             observed_edges = np.append(observed_edges, np.array([[graph.get_edge_index(n.get_id(),current)]]), axis=0)
             observed_congestions = np.append(observed_congestions, np.array([[n.get_weight(graph.get_vertex(current))]]), axis=0)
 
-    print observed_edges
-    print "======="
-    print observed_congestions
-    print result_prediction
+    #print observed_edges
+    #print "======="
+    #print observed_congestions
+    #print result_prediction
 
     m = GPy.models.GPRegression(observed_edges,observed_congestions, ker1)
     m.optimize(messages=False)
     updated_weight = m.predict(result_prediction)[0]
-    print "=======!!!!!!!!!!!!!!!!!!!!!!!!!!!==============================="
-    print updated_weight.shape[0]
+    #print "=======!!!!!!!!!!!!!!!!!!!!!!!!!!!==============================="
+    #print updated_weight.shape[0]
     for k in range (updated_weight.shape[0]):
         if updated_weight[k][0]<0:
-            print "negative"
+            #print "negative"
             updated_weight[k][0] = 0
 
     graph.update_gp_weight(updated_weight)
